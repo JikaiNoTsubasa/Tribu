@@ -7,6 +7,6 @@
     <display-name>tribu</display-name>
 
     <welcome-file-list>
-        <welcome-file>ui/home</welcome-file>
+        <welcome-file>home</welcome-file>
     </welcome-file-list>
 </web-app>

@@ -7,15 +7,25 @@ create table tuser(
     primary key(user_id)
 ) engine = InnoDB;
 
+create table tconvers(
+    convers_id                      int AUTO_INCREMENT,
+    convers_sender                  int not null,
+    convers_receiver                int not null,
+    primary key (convers_id),
+    foreign key (convers_sender) references tuser(user_id),
+    foreign key (convers_receiver) references tuser(user_id)
+) engine = InnoDB;
+
 create table tmessage(
     message_id                      int AUTO_INCREMENT,
-    message_sender                  int not null,
-    message_receiver                int null,
-    message_group                   int null,
+    message_convers                 int not null,
     message_content                 text not null,
     message_date                    timestamp default CURRENT_TIMESTAMP,
-    primary key(message_id)
+    primary key(message_id),
+    foreign key (message_convers) references tconvers(convers_id)
 ) engine = InnoDB;
+
+
 
 create table tgroup(
     group_id                        int AUTO_INCREMENT primary key,

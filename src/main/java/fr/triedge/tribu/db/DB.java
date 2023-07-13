@@ -109,7 +109,7 @@ public class DB {
         String sql = "select * from tuser where user_email=? and user_password=?";
         PreparedStatement stmt = getConnection().prepareStatement(sql);
         stmt.setString(1, email);
-        stmt.setString(2, password);
+        stmt.setString(2, new SPassword(password).getEncrypted());
         ResultSet res = stmt.executeQuery();
         user = createUser(res);
         res.close();

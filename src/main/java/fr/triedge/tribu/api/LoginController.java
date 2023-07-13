@@ -36,7 +36,8 @@ public class LoginController extends AbstractController{
                     createLoginCookie("TribuUser", new SPassword(username).getEncrypted());
                     return new ModelAndView("redirect:home");
                 }else{
-                    model.addObject("error", "Username or password incorrect");
+                    log.debug("User login failed");
+                    model.addObject("error", "Email ou mot de passe incorrect");
                 }
             } catch (SQLException e) {
                 System.err.println(e);

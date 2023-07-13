@@ -5,6 +5,57 @@
     <th:block th:include="fragments::meta"></th:block>
 </head>
 <body>
-    <h1>Login</h1>
+    <div class="login-panel">
+        <div id="loading" style="display: none; width: 100%; text-align: center;">
+            <span class="login-label">Loading...</span>
+        </div>
+        <form id="formLogin" method="post" action="login">
+            <table style="width: 100%;">
+                <tr>
+                    <td style="text-align: center;">
+                        <img width="100px" height="100px" src="#" alt="LOGO"/>
+                        <br><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td><span class="login-label">Email</span></td>
+                </tr>
+                <tr>
+                    <td>
+                        <input class="login-input" type="text" name="username"/>
+                        <br><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="login-label">Mot de passe</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input class="login-input" type="password" name="password"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: center" colspan="2">
+                        <br><br><br>
+                        <input class="login-button" type="submit" value="Connexion" />
+                    </td>
+                </tr>
+            </table>
+            <span class="login-error" th:if="${error != null}">
+                ERROR: <span th:text="${error}"></span>
+            </span>
+        </form>
+    </div>
+    <script>
+        $(function (){
+            $("#formlogin").on('submit',function(){
+                $("#formlogin").fadeOut(300);
+                $("#loading").show();
+                return true;
+            });
+        });
+    </script>
 </body>
 </html>
